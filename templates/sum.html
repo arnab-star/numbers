@@ -1,10 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>Sum</title>
 </head>
 <body>
-
+<div class="container">
+    <h1>Sum Program</h1>
+    <form action="/sum" method="post">
+        {{form.hidden_tag()}}
+        <div>
+            {{form.num1.label}}
+            {{form.num1()}}
+        </div>
+        <div>
+            {{form.num2.label}}
+            {{form.num2()}}
+        </div>
+        <div>
+            {{form.submit()}}
+        </div>
+        {% if total is not none %}
+        <h1>The sum is {{total}}</h1>
+        {% endif %}
+    </form>
+</div>
 </body>
 </html>
