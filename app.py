@@ -1,3 +1,12 @@
+import app
+from flask import Flask, render_template
+from form import Divform,Subform
+
+app = Flask(__name__)
+
+app.secret_key = "hello india"
+
+
 @app.get("/")
 def hello_world():
     return "<h1>hello_Arnab</h3>"
@@ -40,8 +49,30 @@ def multiply():
         num1 = form.num1.data
         num2 = form.num2.data
         total = num1 + num2
-    return render_template('sum.html', form=form, total=total)
+    return render_template('multiply.html', form=form, total=total)
+
+
+@app.route("/division", methods=['Get','Post'])
+def divison():
+    form = Divform()
+    total = None
+    if form.validate_on_submit():
+        num1 = form.num1.data
+        num2 = form.num2.data
+        total = num1 / num2
+    return render_template('division.html', form=form, total=total)
+
+
+@app.route("/subtraction", methods=['Get','Post'])
+def subtraction():
+    form = Subform()
+    total = None
+    if form.validate_on_submit():
+        num1 = form.num1.data
+        num2 = form.num2.data
+        total = num1 - num2
+    return render_template('subtraction.html', form=form, total=total)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5052,debug=True)
