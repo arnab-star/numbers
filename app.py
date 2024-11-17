@@ -1,6 +1,6 @@
-import app
 from flask import Flask, render_template
-from form import Divform,Subform
+
+from form import Divform, Subform, Aveform, Mulform, Sumform, Percentform
 
 app = Flask(__name__)
 
@@ -25,7 +25,7 @@ def sum_int(a, b):
 
 
 @app.get("/temperature/<c>")
-def convet_to_f(c):
+def convert_to_f(c):
     convert = float(9 / 5) * int(c) + 32
     return f"{convert}"
 
@@ -52,8 +52,8 @@ def multiply():
     return render_template('multiply.html', form=form, total=total)
 
 
-@app.route("/division", methods=['Get','Post'])
-def divison():
+@app.route("/division", methods=['Get', 'Post'])
+def division():
     form = Divform()
     total = None
     if form.validate_on_submit():
@@ -63,7 +63,7 @@ def divison():
     return render_template('division.html', form=form, total=total)
 
 
-@app.route("/subtraction", methods=['Get','Post'])
+@app.route("/subtraction", methods=['Get', 'Post'])
 def subtraction():
     form = Subform()
     total = None
@@ -74,5 +74,34 @@ def subtraction():
     return render_template('subtraction.html', form=form, total=total)
 
 
+@app.route("/average", methods=['Get', 'Post'])
+def average():
+    form = Aveform()
+    total = None
+    if form.validate_on_submit():
+        num1 = form.num1.data
+        num2 = form.num2.data
+        total = num1 + num2
+        average = total / 2
+    return render_template('average.html', form=form, average=average)
+
+
+@app.route("/percentage", methods=['Get', 'Post'])
+def percentage():
+    form = Percentform()
+    percentage = None
+    if form.validate_on_submit():
+        full_marks = form.full_marks.data
+        num1 = form.num1.data
+        num2 = form.num2.data
+        num3 = form.num3.data
+        num4 = form.num4.data
+        num5 = form.num5.data
+        num6 = form.num6.data
+        total = num1 + num2 + num3 + num4 + num5 + num6
+        percentage = (total / (6*full_marks)) *100
+    return render_template('percentage.html', form=form, percentage=percentage)
+
+
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5052,debug=True)
+    app.run(host="0.0.0.0", port=5052, debug=True)
