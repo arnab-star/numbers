@@ -1,6 +1,6 @@
-import app
 from flask import Flask, render_template
-from form import Divform,Subform
+
+from form import Divform, Subform, Sumform, Mulform
 
 app = Flask(__name__)
 
@@ -25,7 +25,7 @@ def sum_int(a, b):
 
 
 @app.get("/temperature/<c>")
-def convet_to_f(c):
+def convert_to_f(c):
     convert = float(9 / 5) * int(c) + 32
     return f"{convert}"
 
