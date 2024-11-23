@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-from form import Divform, Subform, Aveform, Mulform, Sumform, Percentform
+from form import Divform, Subform, Aveform, Mulform, Sumform, Percentform, Kathaform
 
 app = Flask(__name__)
 
@@ -101,6 +101,16 @@ def percentage():
         total = num1 + num2 + num3 + num4 + num5 + num6
         percentage = (total / (6*full_marks)) *100
     return render_template('percentage.html', form=form, percentage=percentage)
+
+@app.route("/katha", methods=['Get', 'Post'])
+def katha():
+    form = Kathaform()
+    square_feet = None
+    if form.validate_on_submit():
+        num1 = form.num1.data
+        square_feet = num1 * 720
+    return render_template('Katha.html', form = form, square_feet=square_feet)
+
 
 
 if __name__ == '__main__':

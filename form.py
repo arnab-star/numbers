@@ -34,11 +34,16 @@ class Aveform(FlaskForm):
 
 
 class Percentform(FlaskForm):
-    full_marks =IntegerField("enter the full marks")
+    full_marks = IntegerField("enter the full marks")
     num1 = IntegerField("Bengali")
     num2 = IntegerField("English")
-    num3= IntegerField("Math")
+    num3 = IntegerField("Math")
     num4 = IntegerField("Science")
     num5 = IntegerField("History")
     num6 = IntegerField("Geography")
     submit = SubmitField("calculate percentage")
+
+
+class Kathaform(FlaskForm):
+    num1 = IntegerField("Katha")
+    submit = SubmitField("calculate square_feet")
