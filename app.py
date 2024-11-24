@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-from form import Divform, Subform, Aveform, Mulform, Sumform, Percentform, Kathaform
+from form import Divform, Subform, Aveform, Mulform, Sumform, Percentform, Kathaform, Bighaform
 
 app = Flask(__name__)
 
@@ -111,6 +111,20 @@ def katha():
         square_feet = num1 * 720
     return render_template('katha.html', form = form, square_feet=square_feet)
 
+
+@app.route("/bigha", methods=['Get', 'Post'])
+def bigha():
+    form = Bighaform()
+    square_feet = None
+    if form.validate_on_submit():
+        num1 = form.bigha.data
+        square_feet = num1 * 14400
+    return render_template('bigha.html', form = form, square_feet=square_feet)
+
+
+@app.route("/home", methods=['Get','Post'])
+def home():
+    return render_template('home.html')
 
 
 if __name__ == '__main__':
