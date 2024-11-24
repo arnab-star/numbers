@@ -45,5 +45,5 @@ class Percentform(FlaskForm):
 
 
 class Kathaform(FlaskForm):
-    num1 = IntegerField("Katha")
+    katha = IntegerField("Katha")
     submit = SubmitField("calculate square_feet")

@@ -107,9 +107,9 @@ def katha():
     form = Kathaform()
     square_feet = None
     if form.validate_on_submit():
-        num1 = form.num1.data
+        num1 = form.katha.data
         square_feet = num1 * 720
-    return render_template('Katha.html', form = form, square_feet=square_feet)
+    return render_template('katha.html', form = form, square_feet=square_feet)
 
 
 
