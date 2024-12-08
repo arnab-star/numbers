@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 
-from form import Divform, Subform, Aveform, Mulform, Sumform, Percentform, Kathaform, Bighaform
+from form import Divform, Subform, Aveform, Mulform, Sumform, Percentform, Kathaform, Bighaform, Kathabigform, \
+    Squarehecform, Hectorform, Kathahecform
 
 app = Flask(__name__)
 
@@ -99,8 +100,9 @@ def percentage():
         num5 = form.num5.data
         num6 = form.num6.data
         total = num1 + num2 + num3 + num4 + num5 + num6
-        percentage = (total / (6*full_marks)) *100
+        percentage = (total / (6 * full_marks)) * 100
     return render_template('percentage.html', form=form, percentage=percentage)
+
 
 @app.route("/katha", methods=['Get', 'Post'])
 def katha():
@@ -109,7 +111,7 @@ def katha():
     if form.validate_on_submit():
         num1 = form.katha.data
         square_feet = num1 * 720
-    return render_template('katha.html', form = form, square_feet=square_feet)
+    return render_template('katha.html', form=form, square_feet=square_feet)
 
 
 @app.route("/bigha", methods=['Get', 'Post'])
@@ -119,10 +121,50 @@ def bigha():
     if form.validate_on_submit():
         num1 = form.bigha.data
         square_feet = num1 * 14400
-    return render_template('bigha.html', form = form, square_feet=square_feet)
+    return render_template('bigha.html', form=form, square_feet=square_feet)
 
 
-@app.route("/home", methods=['Get','Post'])
+@app.route("/bigkatha", methods=['Get','Post'])
+def bigha():
+    form = Kathabigform()
+    katha = None
+    if form.validate_on_submit():
+        num1 = form.bigha.data
+        katha = num1 * 20
+    return render_template('bigkatha.html', form=form, katha=katha)
+
+
+@app.route("/hector", methods=['Get', 'Post'])
+def hector():
+    form = Hectorform()
+    bigha = None
+    if form.validate_on_submit():
+        num1 = form.hector.data
+        bigha = num1 * 7.474930555555556
+    return render_template('hector.html', form=form, bigha=bigha)
+
+
+@app.route("/heckatha", methods=['Get', 'Post'])
+def hector():
+    form = Kathahecform()
+    katha = None
+    if form.validate_on_submit():
+        num1 = form.hector.data
+        katha = num1 * 79.07
+    return render_template('heckatha.html', form=form, katha=katha)
+
+
+@app.route("/hector", methods=['Get', 'Post'])
+def hector():
+    form = Squarehecform()
+    square_feet = None
+    if form.validate_on_submit():
+        num1 = form.hector.data
+        square_feet = num1 * 107639
+    return render_template('hecsquare.html', form=form, square_feet=square_feet)
+
+
+@app.route("/home", methods=['Get', 'Post'])
 def home():
     return render_template('home.html')
 

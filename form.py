@@ -52,3 +52,18 @@ class Kathaform(FlaskForm):
 class Bighaform(FlaskForm):
     bigha = IntegerField("bigha")
     submit = SubmitField("calculate square_feet")
+
+class Kathabigform(FlaskForm):
+    bigha = IntegerField("bigha")
+    submit = SubmitField("calculate katha")
+
+class Hectorform(FlaskForm):
+    hector = IntegerField("hector")
+    submit = SubmitField("calculate bigha")
+
+class Kathahecform(FlaskForm):
+    hector = IntegerField("hector")
+    submit = SubmitField("calculate katha")
+class Squarehecform(FlaskForm):
+    hector = IntegerField("hector")
+    submit = SubmitField("calculate square_feet")

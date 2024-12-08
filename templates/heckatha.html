@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+
+</head>
+<body>
+<div class="container">
+    <h1>hector convert to katha</h1>
+    <form action="/heckatha" method="post">
+        {{form.hidden_tag()}}
+        <div>
+            {{form.hector.label}}
+            {{form.hector()}}
+        </div>
+        <div>
+            {{form.submit()}}
+        </div>
+        {% if katha is not none %}
+        <h1>The Katha is {{katha}}</h1>
+        {% endif %}
+    </form>
+</div>
+</body>
+</html>
