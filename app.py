@@ -125,7 +125,7 @@ def bigha():
 
 
 @app.route("/bigkatha", methods=['Get','Post'])
-def bigha():
+def bigkatha():
     form = Kathabigform()
     katha = None
     if form.validate_on_submit():
@@ -145,7 +145,7 @@ def hector():
 
 
 @app.route("/heckatha", methods=['Get', 'Post'])
-def hector():
+def heckatha():
     form = Kathahecform()
     katha = None
     if form.validate_on_submit():
@@ -155,7 +155,7 @@ def hector():
 
 
 @app.route("/hector", methods=['Get', 'Post'])
-def hector():
+def hecsquare():
     form = Squarehecform()
     square_feet = None
     if form.validate_on_submit():
